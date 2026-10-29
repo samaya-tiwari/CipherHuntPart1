@@ -1,6 +1,89 @@
 #:kivy 1.0
-#:import utils kivy.utils
 
 <LabScreen>:
-    Label:
-        text: "This is the Lab screen"
+    BoxLayout:
+        orientation: "vertical"
+        padding: "20dp"
+        spacing: "12dp"
+
+        Label:
+            text: "[b]Create a Clue[/b]"
+            markup: True
+            font_size: "26sp"
+            size_hint_y: None
+            height: "48dp"
+
+        Label:
+            text: "Write a riddle, add its encoded message, and provide the answer."
+            text_size: self.width, None
+            halign: "left"
+            valign: "middle"
+            size_hint_y: None
+            height: "48dp"
+
+        ScrollView:
+            do_scroll_x: False
+
+            BoxLayout:
+                orientation: "vertical"
+                spacing: "8dp"
+                size_hint_y: None
+                height: self.minimum_height
+
+                Label:
+                    text: "Riddle"
+                    halign: "left"
+                    size_hint_y: None
+                    height: "28dp"
+
+                TextInput:
+                    id: riddle_input
+                    hint_text: "Enter the riddle or clue"
+                    multiline: True
+                    size_hint_y: None
+                    height: "110dp"
+
+                Label:
+                    text: "Cipher text"
+                    halign: "left"
+                    size_hint_y: None
+                    height: "28dp"
+
+                TextInput:
+                    id: cipher_input
+                    hint_text: "Enter the encoded message"
+                    multiline: True
+                    size_hint_y: None
+                    height: "110dp"
+
+                Label:
+                    text: "Answer / key"
+                    halign: "left"
+                    size_hint_y: None
+                    height: "28dp"
+
+                TextInput:
+                    id: answer_input
+                    hint_text: "Enter the answer players must submit"
+                    multiline: False
+                    size_hint_y: None
+                    height: "48dp"
+
+                Label:
+                    text: root.status_text
+                    text_size: self.width, None
+                    halign: "center"
+                    size_hint_y: None
+                    height: "48dp"
+
+                Button:
+                    text: "Save Clue"
+                    size_hint_y: None
+                    height: "48dp"
+                    on_release: root.save_clue()
+
+                Button:
+                    text: "Clear Form"
+                    size_hint_y: None
+                    height: "48dp"
+                    on_release: root.clear_form()
